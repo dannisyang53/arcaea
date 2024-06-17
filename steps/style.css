@@ -1,0 +1,35 @@
+.rb-container2 {
+    column-count: 2;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: 1px solid;
+  text-align: center;
+}
+
+thead,
+tfoot {
+  background-color: #efefef;
+}
+
+tbody {
+/*  background-color: #e4f0f5;*/
+}
+
+th, td {
+  padding: 4px 10px;
+  text-align: center;
+  border-right: 1px solid;
+  border-left: 1px solid;
+}
+
+th {
+  border: 1px solid;
+  padding: 5px 10px;
+}
+
+.trlv {
+  border-top: 1px solid;
+}

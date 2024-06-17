@@ -1,0 +1,91 @@
+.main {
+    font-family: Arial, sans-serif;
+    max-width: 24em;
+    width: 24em;
+    margin: auto;
+    margin-bottom: 60px;
+}
+
+.hidden {
+    display: none;
+}
+
+h1 {
+    text-align: center;
+}
+
+.rb-container {
+    column-count: 4;
+    margin: 0.5em;
+}
+
+input[type='number']{
+    width: 6em;
+    font-size: 1em;
+    appearance: textfield;
+    margin: 0.2em;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type='checkbox']{
+    margin: 0.5em;
+}
+
+input[type='radio']{
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+select {
+    font-size: 1em;
+    margin: 0.2em;
+}
+
+
+.calc-button {
+    margin: 0.25em;
+    padding: 8px;
+    font-size: 1.2em;
+}
+
+.credits {
+    text-align: center;
+}
+
+.advanced {
+    color: gray;
+    font-size: 0.9em;
+}
+
+.errormsg {
+    color: red;
+    /*font-size: 0.9em;*/
+}
+
+.note {
+    font-size: 0.8em;
+    color: gray;
+/*    margin-bottom: 0.5em;*/
+}
+
+details > summary {
+    padding-bottom: 0.5em;
+}
+
+details > div {
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    padding: 0.5em;
+}
+
+ul {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+ul > li {
+    margin: 2px;
+}
