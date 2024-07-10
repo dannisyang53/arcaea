@@ -161,7 +161,7 @@ function calcScores() {
         } else if (goalmax < minsteps) {
             reasons.push("请使用具有更低 STEP 值的搭档")
         }
-        errstr = "步数范围超出, 请尝试:\n<ul>";
+        errstr = "步数范围超出, 尝试下列方法:\n<ul>";
         for (s of reasons) {
             errstr += `\n\t<li>${s}</li>`
         }
