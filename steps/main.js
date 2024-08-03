@@ -151,17 +151,17 @@ function calcScores() {
         let maxsteps = stepstat/50 * (2.5 + 2.45*(ccmax+2)**0.5);
         let reasons = [];
         if (goalmin > maxsteps) {
-            reasons.push("请使用具有更高 STEP 值的搭档")
+            reasons.push("使用具有更高 STEP 值的搭档")
             if (ccmax < 12) {
-                reasons.push("请扩展等级范围")
+                reasons.push("扩展等级范围")
             }
             if (stamboost > 1 || fragboost > 1) {
-                reasons.push("请禁用或调低强化")
+                reasons.push("禁用或调低强化")
             }
         } else if (goalmax < minsteps) {
-            reasons.push("请使用具有更低 STEP 值的搭档")
+            reasons.push("使用具有更低 STEP 值的搭档")
         }
-        errstr = "步数范围超出, 尝试下列方法:\n<ul>";
+        errstr = "步数范围超出, 请尝试下列方法:\n<ul>";
         for (s of reasons) {
             errstr += `\n\t<li>${s}</li>`
         }
