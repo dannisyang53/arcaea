@@ -10,7 +10,7 @@
 <div class="main">
 
 <h1>Arcaea 定数计算器</h1>
-<label><input type="checkbox" id="input-declutter" name="declutter">显示注释和提示</label>
+<label><input type="checkbox" id="input-declutter" name="declutter">显示更多内容</label>
 <hr>
 
 谱面等级：
@@ -22,10 +22,10 @@
     <span class="note">（含搭档技能 STEP 加成，例如百合咲美香）<br></span>
     <label><input type="checkbox" id="input-partnerlv" name="highlv" checked="y">搭档已觉醒或满级</label><br>
     <label><input type="checkbox" id="input-partnernonmax" name="nonmax">非满配猫对立或宿命光</label>
-    <span class="note"><br>提示：选择具有更高 STEP 值的搭档。<br>
-    注释：避免使用能改变分数显示方式的搭档（例如：拉格兰，觉醒忘却）。<br>
-    建议使用困难技能的搭档，这样可以在无法推分时尽早 TL（见下文），并且不会使玩家的潜力值下降。<br>
-    如果潜力值下降不是问题，那么高 STEP 非困难技能搭档也值得考虑，
+    <span class="note"><br>尽量使用具有更高 STEP 值的搭档。<br>
+    但要避免使用能改变分数显示方式的搭档（例如：拉格兰，觉醒忘却）。<br>
+    建议使用困难技能的搭档，这样可以在有掉分可能时尽早 TL （见下文），从而阻止 PTT 下降。<br>
+    如果不介意掉分，那么高 STEP 非困难技能搭档也值得考虑，
     因为由于分数分心而导致过早 TL 不是问题，从而更容易获得接近最低阈值的分数。
     </span>
 </p>
@@ -94,7 +94,7 @@
 <p>最低要求分数：&nbsp;
     <span class="minscorereq" id="minscorereq">0'000'000</span>
     <span class="note"><br>注释：若游玩分数低于此要求，计算器无法给出有效结果。<br>
-    目标分数不超过约 500000 分（高 STEP 搭档（&ge;150）和强化有获得更高分数的余地）。<br>
+    不超过目标分数约 500000 分（使用高 STEP 搭档(&ge;150)和强化可以扩大分数范围）。<br>
     </span></p>
 
 <p>最终游玩分数：&nbsp;<input type="number" id="input-score" name="score" value="9616616"></p>
@@ -107,13 +107,13 @@
 
 <details class="advanced"><summary>高级选项（舍入误差）</summary>
 <div>
-进度误差 （默认设置假设游戏中显示的步数在计算后已<em>向下</em>舍入至小数点后一位）：
+进度误差（默认设置假设游戏中显示的步数在计算后已<em>向下</em>舍入至小数点后一位）：
 <ul>
     <li>进度误差下限：&nbsp;<input type="number" id="input-errmpl" name="errmpl" value="0" disabled></li>
     <li>进度误差上限：&nbsp;<input type="number" id="input-errmpu" name="errmpu" value="0.1"></li>
 </ul>
 搭档 STEP 值误差（默认设置假定游戏中显示的 STEP 值已根据计算中使用的实际 STEP 统计数据<em>向下</em>舍入为整数值；
-对于<em>满配</em>的伞/猫对立或宿命光，误差上限可以设置为 0，对于其他觉醒或满级搭档，上限误差可以设置为 0.5）：
+对于<em>满配</em>的伞/猫对立或宿命光，误差上限可以设置为 0 ，对于其他觉醒或满级搭档，上限误差可以设置为 0.5）：
 <ul>
     <li>STEP 值误差下限：&nbsp;<input type="number" id="input-errstpl" name="errstpl" value="0" disabled><br>
     <li>STEP 值误差上限：&nbsp;<input type="number" id="input-errstpu" name="errstpu" value="0">

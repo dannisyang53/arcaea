@@ -151,7 +151,7 @@ function updateCCs() {
     if (minccrnd > maxccrnd) {
         errMsg.innerText = "最小或最大估计值无效，请检查您的输入。";
     } else if (minccrnd < maxccrnd) {
-        errMsg.innerText = "下限和上限之间的误差幅度太大，无法确定定数。使用其他搭档或较低的分数重试（参阅顶部的注释和提示）。";
+        errMsg.innerText = "下限和上限之间的差值太大，无法确定定数。使用其他搭档或较低的分数重试（勾选上方的复选框以获取更多信息）。";
     } else {
         errMsg.innerText = "";
     }
