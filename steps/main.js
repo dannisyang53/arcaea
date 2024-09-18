@@ -16,24 +16,24 @@ const lvCCs = [
     ['10+', ['10.7', '10.8', '10.9']],
     ['11', ['11.0', '11.1', '11.2', '11.3', '11.4', '11.5']],
     ['12', ['12.0']]
-    ];
+];
 
 
 function scoreToScoreMod(sc) {
     if (sc >= 10000000) {
         return 2;
     } else if (sc > 9800000) {
-        return 1 + (sc-9800000)/200000;
+        return 1 + (sc - 9800000) / 200000;
     } else {
-        return (sc-9500000)/300000;
+        return (sc - 9500000) / 300000;
     }
 }
 
 function scoreModToScore(sm) {
     if (sm >= 1) {
-        return parseInt(9800000 + (sm-1)*200000);
+        return parseInt(9800000 + (sm - 1) * 200000);
     } else {
-        return parseInt(9500000 + sm*300000);
+        return parseInt(9500000 + sm * 300000);
     }
 }
 
@@ -41,7 +41,7 @@ function scoreDisp(score) {
     if (score >= 10000000) {
         return "PM";
     } else {
-        return score.toLocaleString('en-US').replaceAll(',',"'");
+        return score.toLocaleString('en-US').replaceAll(',', "'");
     }
 }
 
@@ -53,18 +53,18 @@ function scoreModDisp(sm) {
 function scoreRange(goalmin, goalmax, stepstat, cc) {
     let scoremin = 0;
     let scoremax = 0;
-    let prminsqrt = (goalmin*50/stepstat - 2.5)/2.45;
+    let prminsqrt = (goalmin * 50 / stepstat - 2.5) / 2.45;
     if (prminsqrt < 0) {
         scoremin = 0;
     } else {
-        scoremin = scoreModToScore(prminsqrt**2 - cc);
+        scoremin = scoreModToScore(prminsqrt ** 2 - cc);
     }
-    let prmaxsqrt = (goalmax*50/(stepstat+1) - 2.5)/2.45;
+    let prmaxsqrt = (goalmax * 50 / (stepstat + 1) - 2.5) / 2.45;
     console.log([goalmax, prmaxsqrt])
     if (prmaxsqrt < 0) {
         return false;
     }
-    let smmax = prmaxsqrt**2 - cc;
+    let smmax = prmaxsqrt ** 2 - cc;
     if (smmax > 2) {
         scoremax = 10000000;
     } else {
@@ -72,7 +72,7 @@ function scoreRange(goalmin, goalmax, stepstat, cc) {
     }
     console.log([scoremin, scoremax])
     if (scoremin > scoremax) {
-        return false; 
+        return false;
     } else {
         return [scoremin, scoremax];
     }
@@ -95,8 +95,8 @@ function calcScores() {
     var fragboost = parseFloat(document.querySelector('input[name="frag"]:checked').value);
     var worldboost = parseFloat(document.querySelector('input[name="world"]:checked').value);
     var mmrboost = parseInt(document.querySelector('input[name="mmr"]:checked').value)
-    goalmin = goalmin/(stamboost*fragboost*worldboost*mmrboost);
-    goalmax = goalmax/(stamboost*fragboost*worldboost*mmrboost);
+    goalmin = goalmin / (stamboost * fragboost * worldboost * mmrboost);
+    goalmax = goalmax / (stamboost * fragboost * worldboost * mmrboost);
 
     let srs = [];
     for (let [lv, ccs] of lvCCs) {
@@ -129,13 +129,13 @@ function calcScores() {
             }
             row += `><td>${cc}</td>`
             row += `<td>${scoreDisp(scoremin)} &ndash; ${scoreDisp(scoremax)}</td>`
-            row += `<td>${scoreDisp(scoremax-scoremin)}</td></tr>`
+            row += `<td>${scoreDisp(scoremax - scoremin)}</td></tr>`
             ccRows.push(row);
         }
         if (lvscoremax > lvscoremin) {
             row = `\t\t<tr class="trlv"><td>${lv}</td>`
             row += `<td>${scoreDisp(lvscoremin)} &ndash; ${scoreDisp(lvscoremax)}</td>`
-            row += `<td>${scoreDisp(lvscoremax-lvscoremin)}</td></tr>`
+            row += `<td>${scoreDisp(lvscoremax - lvscoremin)}</td></tr>`
             lvRows.push(row);
         }
     }
@@ -147,8 +147,8 @@ function calcScores() {
     } else if (ccmin > ccmax) {
         errMsg.innerText = "等级范围无效";
     } else if (srs.length == 0) {
-        let minsteps = (stepstat+1)/50 * 2.5;
-        let maxsteps = stepstat/50 * (2.5 + 2.45*(ccmax+2)**0.5);
+        let minsteps = (stepstat + 1) / 50 * 2.5;
+        let maxsteps = stepstat / 50 * (2.5 + 2.45 * (ccmax + 2) ** 0.5);
         let reasons = [];
         if (goalmin > maxsteps) {
             reasons.push("使用具有更高 STEP 值的搭档")
@@ -176,7 +176,7 @@ function calcScores() {
 function scoresHandler(x) {
     var tablesArray = Array.from(document.getElementsByClassName('scorestable'));
     tablesArray.forEach(ele => {
-        if(ele.id === x) {
+        if (ele.id === x) {
             ele.classList.remove("hidden");
         } else {
             ele.classList.add("hidden");

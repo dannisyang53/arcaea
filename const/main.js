@@ -4,7 +4,7 @@ declutterButton.addEventListener('change', declutterNotes);
 function declutterNotes(e) {
     console.log(e);
     const notesAll = document.getElementsByClassName('note');
-    for(const noteEl of notesAll){
+    for (const noteEl of notesAll) {
         noteEl.classList.toggle("hidden");
     }
 }
@@ -12,8 +12,8 @@ window.addEventListener("load", declutterNotes);
 
 
 // generate radio groups for chart level
-const lvCCs = [ '1', '2', '3', '4', '5', '6', '7', '7.7',
-                '8', '8.7', '9', '9.7', '10', '10.7', '11', '12'];
+const lvCCs = ['1', '2', '3', '4', '5', '6', '7', '7.7',
+    '8', '8.7', '9', '9.7', '10', '10.7', '11', '12'];
 
 const minScoreDiv = document.getElementById("input-lv");
 minScoreDiv.innerHTML = '\n\t' + lvCCs.map((lvcc) => `<div class="rb">\n`
@@ -21,7 +21,7 @@ minScoreDiv.innerHTML = '\n\t' + lvCCs.map((lvcc) => `<div class="rb">\n`
 
 // event listener for chart level change event
 const radioButtonsChart = document.querySelectorAll('input[name="lvcc"]');
-for(const radioButton of radioButtonsChart){
+for (const radioButton of radioButtonsChart) {
     radioButton.addEventListener('change', updateMinScore);
 }
 
@@ -32,11 +32,11 @@ function ccToLv(cc) {
         if (lvDp >= 7) {
             return parseInt(cc) + '+';
         } else {
-            return cc;  
-        }          
+            return cc;
+        }
     } else {
         return cc;
-    }   
+    }
 }
 
 function ccToMinScore(cc) {
@@ -45,9 +45,9 @@ function ccToMinScore(cc) {
     if (sm >= 2) {
         sc = 10000000;
     } else if (sm >= 1) {
-        sc = (sm-1)*200000 + 9800000;
+        sc = (sm - 1) * 200000 + 9800000;
     } else {
-        sc = sm*300000 + 9500000;
+        sc = sm * 300000 + 9500000;
     }
     return parseInt(sc);
 }
@@ -56,17 +56,17 @@ function scoreToScoreMod(sc) {
     if (sc >= 10000000) {
         return 2;
     } else if (sc > 9800000) {
-        return 1 + (sc-9800000)/200000;
+        return 1 + (sc - 9800000) / 200000;
     } else {
-        return (sc-9500000)/300000;
+        return (sc - 9500000) / 300000;
     }
 }
 
 function scoreDisp(score) {
-    let mill = Math.floor(score/1000000);
-    let thou = Math.floor((score%1000000)/1000);
-    let ones = score%1000;
-    return mill + "'" + String(thou).padStart(3,'0') + "'" + String(ones).padStart(3,'0');
+    let mill = Math.floor(score / 1000000);
+    let thou = Math.floor((score % 1000000) / 1000);
+    let ones = score % 1000;
+    return mill + "'" + String(thou).padStart(3, '0') + "'" + String(ones).padStart(3, '0');
 }
 
 function updateMinScore(e) {
@@ -124,26 +124,26 @@ function updateCCs() {
     var errstpu = parseFloat(document.getElementById("input-errstpu").value);
 
     let worldmult = stamboost * fragboost * worldboost * mmrboost;
-    let mincc = calcCC(mapprog-errmpl, score+1, stepstat+errstpu, worldmult);
-    let maxcc = calcCC(mapprog+errmpu, score, stepstat-errstpl, worldmult);
+    let mincc = calcCC(mapprog - errmpl, score + 1, stepstat + errstpu, worldmult);
+    let maxcc = calcCC(mapprog + errmpu, score, stepstat - errstpl, worldmult);
     minCcEl.innerText = mincc.toFixed(3);
-    maxCcEl.innerText = (maxcc+0.001).toFixed(3);
+    maxCcEl.innerText = (maxcc + 0.001).toFixed(3);
 
     let minccrnd = 0;
     let maxccrnd = 0;
     if (mincc < 7.5) {
-        minccrnd = Math.ceil(mincc*2)/2;
+        minccrnd = Math.ceil(mincc * 2) / 2;
     } else if (mincc < 8) {
         minccrnd = 7.8;
     } else {
-        minccrnd = Math.ceil(mincc*10)/10;
+        minccrnd = Math.ceil(mincc * 10) / 10;
     }
     if (maxcc < 7.8) {
-        maxccrnd = Math.floor(maxcc*2)/2;
+        maxccrnd = Math.floor(maxcc * 2) / 2;
     } else if (maxcc < 8) {
         maxccrnd = 7.8
     } else {
-        maxccrnd = Math.floor(maxcc*10)/10;
+        maxccrnd = Math.floor(maxcc * 10) / 10;
     }
     minCcRndEl.innerText = minccrnd.toFixed(1);
     maxCcRndEl.innerText = maxccrnd.toFixed(1);
@@ -158,7 +158,7 @@ function updateCCs() {
 }
 
 function calcCC(mapprog, score, stepstat, legacymult) {
-    let stepbase = mapprog/legacymult/stepstat*50;
-    let playrating = ((stepbase-2.5)/2.45)**2;
+    let stepbase = mapprog / legacymult / stepstat * 50;
+    let playrating = ((stepbase - 2.5) / 2.45) ** 2;
     return playrating - scoreToScoreMod(score);
 }

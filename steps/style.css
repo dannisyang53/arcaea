@@ -1,5 +1,5 @@
 .rb-container2 {
-    column-count: 2;
+  column-count: 2;
 }
 
 table {
@@ -18,7 +18,8 @@ tbody {
   background-color: #e4f0f5;
 }
 
-th, td {
+th,
+td {
   padding: 4px 10px;
   text-align: center;
   border-right: 1px solid;
