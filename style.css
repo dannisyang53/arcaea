@@ -63,13 +63,13 @@ select {
 
 .errormsg {
     color: red;
-    /*font-size: 0.9em;*/
+    font-size: 0.9em;
 }
 
 .note {
     font-size: 0.8em;
     color: gray;
-    /*    margin-bottom: 0.5em;*/
+    margin-bottom: 0.5em;
 }
 
 details>summary {
