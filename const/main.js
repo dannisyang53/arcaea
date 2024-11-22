@@ -1,6 +1,7 @@
 // show/hide notes
 const declutterButton = document.getElementById("input-declutter");
 declutterButton.addEventListener('change', declutterNotes);
+
 function declutterNotes(e) {
     console.log(e);
     const notesAll = document.getElementsByClassName('note');
@@ -8,16 +9,15 @@ function declutterNotes(e) {
         noteEl.classList.toggle("hidden");
     }
 }
+
 window.addEventListener("load", declutterNotes);
 
 
 // generate radio groups for chart level
-const lvCCs = ['1', '2', '3', '4', '5', '6', '7', '7.7',
-    '8', '8.7', '9', '9.7', '10', '10.7', '11', '11.7', '12'];
+const lvCCs = ['1', '2', '3', '4', '5', '6', '7', '7.7', '8', '8.7', '9', '9.7', '10', '10.7', '11', '11.8', '12'];
 
 const minScoreDiv = document.getElementById("input-lv");
-minScoreDiv.innerHTML = '\n\t' + lvCCs.map((lvcc) => `<div class="rb">\n`
-    + `\t\t<label><input type="radio" name="lvcc" value="${lvcc}">${ccToLv(lvcc)}</label>\n\t</div>`).join('\n\t') + '\n';
+minScoreDiv.innerHTML = '\n\t' + lvCCs.map((lvcc) => `<div class="rb">\n` + `\t\t<label><input type="radio" name="lvcc" value="${lvcc}">${ccToLv(lvcc)}</label>\n\t</div>`).join('\n\t') + '\n';
 
 // event listener for chart level change event
 const radioButtonsChart = document.querySelectorAll('input[name="lvcc"]');
@@ -27,7 +27,6 @@ for (const radioButton of radioButtonsChart) {
 
 function ccToLv(cc) {
     if (cc.includes('.')) {
-        let baseLv = parseInt(cc);
         let lvDp = parseInt(cc.split('.')[0]);
         if (lvDp >= 7) {
             return parseInt(cc) + '+';
@@ -41,7 +40,7 @@ function ccToLv(cc) {
 
 function ccToMinScore(cc) {
     let sm = -parseFloat(cc);
-    let sc = 0;
+    let sc;
     if (sm >= 2) {
         sc = 10000000;
     } else if (sm >= 1) {
@@ -102,7 +101,7 @@ function updateStpUError(e) {
         errStpUInput.setAttribute('value', errStpUSpecial);
     } else if (partnerLvInput.checked && !partnerNonmaxInput.checked) {
         errStpUInput.setAttribute('value', errStpUHighLv);
-    } else if (partnerStepInput.value == 50) {
+    } else if (partnerStepInput.value === 50) {
         errStpUInput.setAttribute('value', errStpUSealed);
     } else {
         errStpUInput.setAttribute('value', errStpUDefault);
@@ -129,8 +128,8 @@ function updateCCs() {
     minCcEl.innerText = mincc.toFixed(3);
     maxCcEl.innerText = (maxcc + 0.001).toFixed(3);
 
-    let minccrnd = 0;
-    let maxccrnd = 0;
+    let minccrnd;
+    let maxccrnd;
     if (mincc < 7.5) {
         minccrnd = Math.ceil(mincc * 2) / 2;
     } else if (mincc < 8) {

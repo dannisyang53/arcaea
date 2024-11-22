@@ -1,34 +1,5 @@
 // lvs and ccs
-const lvCCs = [
-    ['1', ['1.0', '1.5']],
-    ['2', ['2.0', '2.5']],
-    ['3', ['3.0', '3.5']],
-    ['4', ['4.0', '4.5']],
-    ['5', ['5.0', '5.5']],
-    ['6', ['6.0', '6.5']],
-    ['7', ['7.0', '7.5']],
-    ['7+', ['7.8']],
-    ['8', ['8.0', '8.1', '8.2', '8.3', '8.4', '8.5', '8.6']],
-    ['8+', ['8.7', '8.8', '8.9']],
-    ['9', ['9.0', '9.1', '9.2', '9.3', '9.4', '9.5', '9.6']],
-    ['9+', ['9.7', '9.8', '9.9']],
-    ['10', ['10.0', '10.1', '10.2', '10.3', '10.4', '10.5', '10.6']],
-    ['10+', ['10.7', '10.8', '10.9']],
-    ['11', ['11.0', '11.1', '11.2', '11.3', '11.4', '11.5', '11.6']],
-    ['11+', ['11.7', '11.8', '11.9']],
-    ['12', ['12.0']]
-];
-
-
-function scoreToScoreMod(sc) {
-    if (sc >= 10000000) {
-        return 2;
-    } else if (sc > 9800000) {
-        return 1 + (sc - 9800000) / 200000;
-    } else {
-        return (sc - 9500000) / 300000;
-    }
-}
+const lvCCs = [['1', ['1.0', '1.5']], ['2', ['2.0', '2.5']], ['3', ['3.0', '3.5']], ['4', ['4.0', '4.5']], ['5', ['5.0', '5.5']], ['6', ['6.0', '6.5']], ['7', ['7.0', '7.5']], ['7+', ['7.8']], ['8', ['8.0', '8.1', '8.2', '8.3', '8.4', '8.5', '8.6']], ['8+', ['8.7', '8.8', '8.9']], ['9', ['9.0', '9.1', '9.2', '9.3', '9.4', '9.5', '9.6']], ['9+', ['9.7', '9.8', '9.9']], ['10', ['10.0', '10.1', '10.2', '10.3', '10.4', '10.5', '10.6']], ['10+', ['10.7', '10.8', '10.9']], ['11', ['11.0', '11.1', '11.2', '11.3', '11.4', '11.5', '11.6', '11.7']], ['11+', ['11.9']], ['12', ['12.0']]];
 
 function scoreModToScore(sm) {
     if (sm >= 1) {
@@ -46,13 +17,8 @@ function scoreDisp(score) {
     }
 }
 
-function scoreModDisp(sm) {
-    let score = scoreModToScore(sm);
-    return scoreDisp(score);
-}
-
 function scoreRange(goalmin, goalmax, stepstat, cc) {
-    let scoremin = 0;
+    let scoremin;
     let scoremax = 0;
     let prminsqrt = (goalmin * 50 / stepstat - 2.5) / 2.45;
     if (prminsqrt < 0) {
@@ -84,7 +50,6 @@ function scoreRange(goalmin, goalmax, stepstat, cc) {
 const scorerowscc = document.getElementById("scoresccrows");
 const scorerowslv = document.getElementById("scoreslvrows");
 const errMsg = document.getElementById("calcerror");
-var wew = 0;
 
 function calcScores() {
     var goalmin = parseFloat(document.getElementById("input-goalmin").value);
@@ -105,7 +70,7 @@ function calcScores() {
         for (let cc of ccs) {
             sr = scoreRange(goalmin, goalmax, stepstat, cc);
             if (cc < ccmin || cc > ccmax) {
-                continue;
+
             } else if (sr) {
                 lvsrs.push([cc, sr]);
             }
@@ -125,7 +90,7 @@ function calcScores() {
             lvscoremin = Math.max(lvscoremin, scoremin);
             lvscoremax = Math.min(lvscoremax, scoremax);
             let row = "\t\t<tr";
-            if (cc == ccbase) {
+            if (cc === ccbase) {
                 row = row + ' class="trlv"'
             }
             row += `><td>${cc}</td>`
@@ -147,7 +112,7 @@ function calcScores() {
         errMsg.innerText = "步数范围无效";
     } else if (ccmin > ccmax) {
         errMsg.innerText = "等级范围无效";
-    } else if (srs.length == 0) {
+    } else if (srs.length === 0) {
         let minsteps = (stepstat + 1) / 50 * 2.5;
         let maxsteps = stepstat / 50 * (2.5 + 2.45 * (ccmax + 2) ** 0.5);
         let reasons = [];

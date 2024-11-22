@@ -1,186 +1,181 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
 
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="../style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     <title>Arcaea 世界模式计算器</title>
 </head>
 
 <body>
-    <div class="main">
+<div class="main">
 
-        <h1>Arcaea 世界模式计算器</h1>
-        <hr>
+    <h1>Arcaea 世界模式计算器</h1>
+    <hr>
 
-        <p>
-            目标步数范围：
-            <input type="number" id="input-goalmin" name="goalmin" min="0" max="1000" step="0.1" value="21">
-            至
-            <input type="number" id="input-goalmax" name="goalmax" min="0" max="1000" step="0.1" value="22">
-        </p>
-
-        等级范围：
-        <select name="ccmin" id="input-ccmin">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7" selected>7</option>
-            <option value="7.8">7+</option>
-            <option value="8">8</option>
-            <option value="8.7">8+</option>
-            <option value="9">9</option>
-            <option value="9.7">9+</option>
-            <option value="10">10</option>
-            <option value="10.7">10+</option>
-            <option value="11">11</option>
-            <option value="11.7">11+</option>
-            <option value="12">12</option>
-        </select>
+    <p>
+        目标步数范围：
+        <label><input id="input-goalmin" max="1000" min="0" name="goalmin" step="0.1" type="number" value="21"></label>
         至
-        <select name="ccmax" id="input-ccmax">
-            <option value="1.5">1</option>
-            <option value="2.5">2</option>
-            <option value="3.5">3</option>
-            <option value="4.5">4</option>
-            <option value="5.5">5</option>
-            <option value="6.5">6</option>
-            <option value="7.5">7</option>
-            <option value="7.8">7+</option>
-            <option value="8.6">8</option>
-            <option value="8.9">8+</option>
-            <option value="9.6">9</option>
-            <option value="9.9">9+</option>
-            <option value="10.6" selected>10</option>
-            <option value="10.9">10+</option>
-            <option value="11.6">11</option>
-            <option value="11.9">11+</option>
-            <option value="12">12</option>
-        </select>
+        <label><input id="input-goalmax" max="1000" min="0" name="goalmax" step="0.1" type="number" value="22"></label>
+    </p>
 
-        <p>
-            搭档 STEP 值：&nbsp;
-            <input type="number" id="input-partnerstep" name="stepstat" min="50" max="310" step="1" value="102"><br>
-            <span class="note">（含搭档技能 STEP 加成，例如百合咲美香；避免使用具有可变 STEP 加成或惩罚的搭档，例如密特拉·泰尔塞拉）<br></span>
-        </p>
+    等级范围：<label><select id="input-ccmin" name="ccmin">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option selected value="7">7</option>
+    <option value="7.8">7+</option>
+    <option value="8">8</option>
+    <option value="8.7">8+</option>
+    <option value="9">9</option>
+    <option value="9.7">9+</option>
+    <option value="10">10</option>
+    <option value="10.7">10+</option>
+    <option value="11">11</option>
+    <option value="11.9">11+</option>
+    <option value="12">12</option>
+</select></label>
+    至
+    <label><select id="input-ccmax" name="ccmax">
+        <option value="1.5">1</option>
+        <option value="2.5">2</option>
+        <option value="3.5">3</option>
+        <option value="4.5">4</option>
+        <option value="5.5">5</option>
+        <option value="6.5">6</option>
+        <option value="7.5">7</option>
+        <option value="7.8">7+</option>
+        <option value="8.6">8</option>
+        <option value="8.9">8+</option>
+        <option value="9.6">9</option>
+        <option value="9.9">9+</option>
+        <option selected value="10.6">10</option>
+        <option value="10.9">10+</option>
+        <option value="11.7">11</option>
+        <option value="11.9">11+</option>
+        <option value="12">12</option>
+    </select></label>
 
-        <details>
-            <summary>强化</summary>
-            <div>
-                体力强化：
-                <div class="rb-container" id="input-stam">
-                    <div class="rb">
-                        <label><input type="radio" name="stam" value="1" checked="y">未激活</label>
-                    </div>
-                    <div class="rb">
-                        <label><input type="radio" name="stam" value="2">x 2</label>
-                    </div>
-                    <div class="rb">
-                        <label><input type="radio" name="stam" value="4">x 4</label>
-                    </div>
-                    <div class="rb">
-                        <label><input type="radio" name="stam" value="6">x 6</label>
-                    </div>
+    <p>
+        搭档 STEP 值：
+        <label><input id="input-partnerstep" max="310" min="50" name="stepstat" step="1" type="number"
+                      value="102"></label><br>
+        <span class="note">（含搭档技能 STEP 加成，例如百合咲美香；避免使用具有可变 STEP 加成或惩罚的搭档，例如密特拉·泰尔塞拉）</span>
+    </p>
+
+    <details>
+        <summary>强化</summary>
+        <div>
+            体力强化：
+            <div class="rb-container" id="input-stam">
+                <div class="rb">
+                    <label><input checked="checked" name="stam" type="radio" value="1">未激活</label>
                 </div>
-                残片强化：
-                <div class="rb-container" id="input-frag">
-                    <div class="rb">
-                        <label><input type="radio" name="frag" value="1" checked="y">未激活</label>
-                    </div>
-                    <div class="rb">
-                        <label><input type="radio" name="frag" value="1.1">x 1.1</label>
-                    </div>
-                    <div class="rb">
-                        <label><input type="radio" name="frag" value="1.25">x 1.25</label>
-                    </div>
-                    <div class="rb">
-                        <label><input type="radio" name="frag" value="1.5">x 1.5</label>
-                    </div>
+                <div class="rb">
+                    <label><input name="stam" type="radio" value="2">x 2</label>
                 </div>
-                世界强化：
-                <div class="rb-container" id="input-world">
-                    <div class="rb">
-                        <label><input type="radio" name="world" value="1" checked="y">未激活</label>
-                    </div>
-                    <div>
-                        <label><input type="radio" name="world" value="1.2">x 1.2</label>
-                    </div>
-                    <div>
-                        <label><input type="radio" name="world" value="1.25">x 1.25</label>
-                    </div>
-                    <div>
-                        <label><input type="radio" name="world" value="1.3">x 1.3</label>
-                    </div>
+                <div class="rb">
+                    <label><input name="stam" type="radio" value="4">x 4</label>
                 </div>
-                源韵强化：
-                <div class="rb-container" id="input-mmr">
-                    <div class="rb">
-                        <label><input type="radio" name="mmr" value="1" checked="y">未激活</label>
-                    </div>
-                    <div class="rb">
-                        <label><input type="radio" name="mmr" value="4">x 4</label>
-                    </div>
+                <div class="rb">
+                    <label><input name="stam" type="radio" value="6">x 6</label>
                 </div>
             </div>
-        </details>
-
-        <button type="button" id="calc-button" class="calc-button" onclick="calcScores()">
-            开始计算
-        </button>
-
-        <hr>
-
-        <p>
-            分数范围展示方式：
-        <div class="rb-container rb-container2" id="input-vistable">
-            <div class="rb">
-                <label><input type="radio" name="vistable" onclick="scoresHandler('scoreslv')" checked>等级</label>
+            残片强化：
+            <div class="rb-container" id="input-frag">
+                <div class="rb">
+                    <label><input checked="checked" name="frag" type="radio" value="1">未激活</label>
+                </div>
+                <div class="rb">
+                    <label><input name="frag" type="radio" value="1.1">x 1.1</label>
+                </div>
+                <div class="rb">
+                    <label><input name="frag" type="radio" value="1.25">x 1.25</label>
+                </div>
+                <div class="rb">
+                    <label><input name="frag" type="radio" value="1.5">x 1.5</label>
+                </div>
             </div>
-            <div class="rb">
-                <label><input type="radio" name="vistable" onclick="scoresHandler('scorescc')">定数</label>
+            世界强化：
+            <div class="rb-container" id="input-world">
+                <div class="rb">
+                    <label><input checked="checked" name="world" type="radio" value="1">未激活</label>
+                </div>
+                <div>
+                    <label><input name="world" type="radio" value="1.2">x 1.2</label>
+                </div>
+                <div>
+                    <label><input name="world" type="radio" value="1.25">x 1.25</label>
+                </div>
+                <div>
+                    <label><input name="world" type="radio" value="1.3">x 1.3</label>
+                </div>
+            </div>
+            源韵强化：
+            <div class="rb-container" id="input-mmr">
+                <div class="rb">
+                    <label><input checked="checked" name="mmr" type="radio" value="1">未激活</label>
+                </div>
+                <div class="rb">
+                    <label><input name="mmr" type="radio" value="4">x 4</label>
+                </div>
             </div>
         </div>
-        </p>
+    </details>
 
+    <button class="calc-button" id="calc-button" onclick="calcScores()" type="button">
+        开始计算
+    </button>
 
-        <p><span class="errormsg" id="calcerror"></span></p>
+    <hr>
 
-
-
-        <table id="scoreslv" class="scorestable">
-            <thead>
-                <tr>
-                    <th>等级</th>
-                    <th>范围</th>
-                    <th>分差</th>
-                </tr>
-            </thead>
-            <tbody id="scoreslvrows">
-            </tbody>
-        </table>
-
-        <table id="scorescc" class="scorestable hidden">
-            <thead>
-                <tr>
-                    <th>定数</th>
-                    <th>范围</th>
-                    <th>分差</th>
-                </tr>
-            </thead>
-            <tbody id="scoresccrows">
-            </tbody>
-        </table>
-
-        <p><span class="errormsg" id="calcerror"></span></p>
-
-        <hr>
-        <p class="credits">原作：<a href="https://yabaiyatsu.github.io/">YabaiYatsu</a>，汉化：<a href="..">SPB</a></p>
-
+    <p>分数范围展示方式：
+    <div class="rb-container rb-container2" id="input-vistable">
+        <div class="rb">
+            <label><input checked="checked" name="vistable" onclick="scoresHandler('scoreslv')"
+                          type="radio">等级</label>
+        </div>
+        <div class="rb">
+            <label><input name="vistable" onclick="scoresHandler('scorescc')" type="radio">定数</label>
+        </div>
     </div>
+
+
+    <table class="scorestable" id="scoreslv">
+        <thead>
+        <tr>
+            <th>等级</th>
+            <th>范围</th>
+            <th>分差</th>
+        </tr>
+        </thead>
+        <tbody id="scoreslvrows">
+        </tbody>
+    </table>
+
+    <table class="scorestable hidden" id="scorescc">
+        <thead>
+        <tr>
+            <th>定数</th>
+            <th>范围</th>
+            <th>分差</th>
+        </tr>
+        </thead>
+        <tbody id="scoresccrows">
+        </tbody>
+    </table>
+
+    <p><span class="errormsg" id="calcerror"></span></p>
+
+    <hr>
+    <p class="credits">原作：<a href="https://yabaiyatsu.github.io/">YabaiYatsu</a>，汉化：<a href="..">SPB</a></p>
+
+</div>
 </body>
 
 <script src="main.js"></script>

@@ -2,8 +2,7 @@
     font-family: Arial, sans-serif;
     max-width: 24em;
     width: 24em;
-    margin: auto;
-    margin-bottom: 60px;
+    margin: auto auto 60px;
 }
 
 .hidden {
@@ -72,11 +71,11 @@ select {
     margin-bottom: 0.5em;
 }
 
-details>summary {
+details > summary {
     padding-bottom: 0.5em;
 }
 
-details>div {
+details > div {
     border: 1px solid #aaa;
     border-radius: 8px;
     padding: 0.5em;
@@ -87,6 +86,6 @@ ul {
     margin-bottom: 0.5em;
 }
 
-ul>li {
+ul > li {
     margin: 2px;
 }
