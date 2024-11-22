@@ -13,7 +13,7 @@ window.addEventListener("load", declutterNotes);
 
 // generate radio groups for chart level
 const lvCCs = ['1', '2', '3', '4', '5', '6', '7', '7.7',
-    '8', '8.7', '9', '9.7', '10', '10.7', '11', '12'];
+    '8', '8.7', '9', '9.7', '10', '10.7', '11', '11.7', '12'];
 
 const minScoreDiv = document.getElementById("input-lv");
 minScoreDiv.innerHTML = '\n\t' + lvCCs.map((lvcc) => `<div class="rb">\n`
@@ -157,8 +157,8 @@ function updateCCs() {
     }
 }
 
-function calcCC(mapprog, score, stepstat, legacymult) {
-    let stepbase = mapprog / legacymult / stepstat * 50;
+function calcCC(mapprog, score, stepstat, worldmult) {
+    let stepbase = mapprog / worldmult / stepstat * 50;
     let playrating = ((stepbase - 2.5) / 2.45) ** 2;
     return playrating - scoreToScoreMod(score);
 }
