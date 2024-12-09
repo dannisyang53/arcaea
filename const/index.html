@@ -1,156 +1,270 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8" content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="../style.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+  <head>
+    <meta
+      charset="UTF-8"
+      content="width=device-width, initial-scale=1.0"
+      name="viewport"
+    />
+    <link href="../style.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
     <title>Arcaea 定数计算器</title>
-</head>
+  </head>
 
-<body>
-<div class="main">
+  <body>
+    <div class="main">
+      <h1>Arcaea 定数计算器</h1>
+      <label
+        ><input
+          id="input-declutter"
+          name="declutter"
+          type="checkbox"
+        />显示更多内容</label
+      >
+      <hr />
 
-    <h1>Arcaea 定数计算器</h1>
-    <label><input id="input-declutter" name="declutter" type="checkbox">显示更多内容</label>
-    <hr>
+      谱面等级：
+      <div class="rb-container" id="input-lv"></div>
 
-    谱面等级：
-    <div class="rb-container" id="input-lv">
-    </div>
+      <p>
+        搭档 STEP 值：<label
+          ><input
+            id="input-partnerstep"
+            max="310"
+            min="50"
+            name="stepstat"
+            step="1"
+            type="number"
+            value="160" /></label
+        ><br />
+        <span class="note">（含搭档技能 STEP 加成，例如百合咲美香）<br /></span>
+        <label
+          ><input
+            checked="checked"
+            id="input-partnerlv"
+            name="highlv"
+            type="checkbox"
+          />搭档已觉醒或满级</label
+        ><br />
+        <label
+          ><input
+            id="input-partnernonmax"
+            name="nonmax"
+            type="checkbox"
+          />非满配猫对立或宿命光</label
+        >
+        <span class="note"
+          ><br />尽量使用具有更高 STEP 值的搭档。<br />
+          但要避免使用能改变分数显示方式的搭档（例如：拉格兰，觉醒忘却）。<br />
+          建议使用困难技能的搭档，这样可以在有掉分可能时尽早 TL
+          （见下文），从而阻止 PTT 下降。<br />
+          如果不介意掉分，那么高 STEP 非困难技能搭档也值得考虑，
+          因为由于分数分心而导致过早 TL
+          不在你的考虑范围内，从而更容易获得接近最低阈值的分数。
+        </span>
+      </p>
 
-    <p>
-        搭档 STEP 值：<label><input id="input-partnerstep" max="310" min="50" name="stepstat" step="1" type="number"
-                                   value="160"></label><br>
-        <span class="note">（含搭档技能 STEP 加成，例如百合咲美香）<br></span>
-        <label><input checked="checked" id="input-partnerlv" name="highlv" type="checkbox">搭档已觉醒或满级</label><br>
-        <label><input id="input-partnernonmax" name="nonmax" type="checkbox">非满配猫对立或宿命光</label>
-        <span class="note"><br>尽量使用具有更高 STEP 值的搭档。<br>
-                但要避免使用能改变分数显示方式的搭档（例如：拉格兰，觉醒忘却）。<br>
-                建议使用困难技能的搭档，这样可以在有掉分可能时尽早 TL （见下文），从而阻止 PTT 下降。<br>
-                如果不介意掉分，那么高 STEP 非困难技能搭档也值得考虑，
-                因为由于分数分心而导致过早 TL 不在你的考虑范围内，从而更容易获得接近最低阈值的分数。
-            </span>
-    </p>
-
-    <details>
-        <summary>强化
-            <span class="note">（尽量使用）</span>
+      <details>
+        <summary>
+          强化
+          <span class="note">（尽量使用）</span>
         </summary>
         <div>
-            体力强化：
-            <div class="rb-container" id="input-stam">
-                <div class="rb">
-                    <label><input checked="checked" name="stam" type="radio" value="1">x 1</label>
-                </div>
-                <div class="rb">
-                    <label><input name="stam" type="radio" value="2">x 2</label>
-                </div>
-                <div class="rb">
-                    <label><input name="stam" type="radio" value="4">x 4</label>
-                </div>
-                <div class="rb">
-                    <label><input name="stam" type="radio" value="6">x 6</label>
-                </div>
+          体力强化：
+          <div class="rb-container" id="input-stam">
+            <div class="rb">
+              <label
+                ><input checked="checked" name="stam" type="radio" value="1" />x
+                1</label
+              >
             </div>
-            残片强化：
-            <div class="rb-container" id="input-frag">
-                <div class="rb">
-                    <label><input checked="checked" name="frag" type="radio" value="1">x 1</label>
-                </div>
-                <div class="rb">
-                    <label><input name="frag" type="radio" value="1.1">x 1.1</label>
-                </div>
-                <div class="rb">
-                    <label><input name="frag" type="radio" value="1.25">x 1.25</label>
-                </div>
-                <div class="rb">
-                    <label><input name="frag" type="radio" value="1.5">x 1.5</label>
-                </div>
+            <div class="rb">
+              <label><input name="stam" type="radio" value="2" />x 2</label>
             </div>
-            世界强化：
-            <div class="rb-container" id="input-world">
-                <div class="rb">
-                    <label><input checked="checked" name="world" type="radio" value="1">x 1</label>
-                </div>
-                <div>
-                    <label><input name="world" type="radio" value="1.2">x 1.2</label>
-                </div>
-                <div>
-                    <label><input name="world" type="radio" value="1.25">x 1.25</label>
-                </div>
-                <div>
-                    <label><input name="world" type="radio" value="1.3">x 1.3</label>
-                </div>
+            <div class="rb">
+              <label><input name="stam" type="radio" value="4" />x 4</label>
             </div>
-            源韵强化：
-            <div class="rb-container" id="input-mmr">
-                <div class="rb">
-                    <label><input checked="checked" name="mmr" type="radio" value="1">x 1</label>
-                </div>
-                <div class="rb">
-                    <label><input name="mmr" type="radio" value="4">x 4</label>
-                </div>
+            <div class="rb">
+              <label><input name="stam" type="radio" value="6" />x 6</label>
             </div>
+          </div>
+          残片强化：
+          <div class="rb-container" id="input-frag">
+            <div class="rb">
+              <label
+                ><input checked="checked" name="frag" type="radio" value="1" />x
+                1</label
+              >
+            </div>
+            <div class="rb">
+              <label><input name="frag" type="radio" value="1.1" />x 1.1</label>
+            </div>
+            <div class="rb">
+              <label
+                ><input name="frag" type="radio" value="1.25" />x 1.25</label
+              >
+            </div>
+            <div class="rb">
+              <label><input name="frag" type="radio" value="1.5" />x 1.5</label>
+            </div>
+          </div>
+          世界强化：
+          <div class="rb-container" id="input-world">
+            <div class="rb">
+              <label
+                ><input
+                  checked="checked"
+                  name="world"
+                  type="radio"
+                  value="1"
+                />x 1</label
+              >
+            </div>
+            <div>
+              <label
+                ><input name="world" type="radio" value="1.2" />x 1.2</label
+              >
+            </div>
+            <div>
+              <label
+                ><input name="world" type="radio" value="1.25" />x 1.25</label
+              >
+            </div>
+            <div>
+              <label
+                ><input name="world" type="radio" value="1.3" />x 1.3</label
+              >
+            </div>
+          </div>
+          源韵强化：
+          <div class="rb-container" id="input-mmr">
+            <div class="rb">
+              <label
+                ><input checked="checked" name="mmr" type="radio" value="1" />x
+                1</label
+              >
+            </div>
+            <div class="rb">
+              <label><input name="mmr" type="radio" value="4" />x 4</label>
+            </div>
+          </div>
         </div>
-    </details>
+      </details>
 
-    <hr>
+      <hr />
 
-    <p>最低要求分数：
+      <p>
+        最低要求分数：
         <span class="minscorereq" id="minscorereq">0'000'000</span>
-        <span class="note"><br>若游玩分数低于此要求，计算器无法给出有效结果。<br>
-                不超过目标分数约 500000 分（使用高 STEP 搭档(&ge;150)和强化可以扩大分数范围）。<br>
-            </span>
-    </p>
+        <span class="note"
+          ><br />若游玩分数低于此要求，计算器无法给出有效结果。<br />
+          不超过目标分数约 500000 分（使用高 STEP
+          搭档(&ge;150)和强化可以扩大分数范围）。<br />
+        </span>
+      </p>
 
-    <p>最终游玩分数：<label><input id="input-score" name="score" type="number" value="9616616"></label></p>
+      <p>
+        最终游玩分数：<label
+          ><input id="input-score" name="score" type="number" value="9616616"
+        /></label>
+      </p>
 
-    <p>地图总进度：<label><input id="input-mapprog" name="mapprog" step="0.1" type="number" value="31.7"></label>
-        <span class="note"><br>（搭档加成<em>后</em>，但
-                <em>不包含</em>后续搭档技能加成，
-                例如觉醒露娜）</span>
-    </p>
+      <p>
+        地图总进度：<label
+          ><input
+            id="input-mapprog"
+            name="mapprog"
+            step="0.1"
+            type="number"
+            value="31.7"
+        /></label>
+        <span class="note"
+          ><br />（搭档加成<em>后</em>，但 <em>不包含</em>后续搭档技能加成，
+          例如觉醒露娜）</span
+        >
+      </p>
 
-    <details class="advanced">
+      <details class="advanced">
         <summary>高级选项（舍入误差）</summary>
         <div>
-            进度误差（默认设置假设游戏中显示的步数在计算后已<em>向下</em>舍入至小数点后一位）：
-            <ul>
-                <li>进度误差下限：<label><input disabled="disabled" id="input-errmpl" name="errmpl" type="number"
-                                               value="0"></label></li>
-                <li>进度误差上限：<label><input id="input-errmpu" name="errmpu" type="number" value="0.1"></label></li>
-            </ul>
-            搭档 STEP 值误差（默认设置假定游戏中显示的 STEP 值已根据计算中使用的实际 STEP 统计数据<em>向下</em>舍入为整数值；
-            对于<em>满配</em>的伞/猫对立或宿命光，误差上限可以设置为 0 ，对于其他觉醒或满级搭档，上限误差可以设置为 0.5）：
-            <ul>
-                <li>STEP 值误差下限：<label><input disabled="disabled" id="input-errstpl" name="errstpl" type="number"
-                                                  value="0"></label></li>
-                <li>STEP 值误差上限：<label><input id="input-errstpu" name="errstpu" type="number" value="0"></label>
-                </li>
-            </ul>
+          进度误差（默认设置假设游戏中显示的步数在计算后已<em>向下</em>舍入至小数点后一位）：
+          <ul>
+            <li>
+              进度误差下限：<label
+                ><input
+                  disabled="disabled"
+                  id="input-errmpl"
+                  name="errmpl"
+                  type="number"
+                  value="0"
+              /></label>
+            </li>
+            <li>
+              进度误差上限：<label
+                ><input
+                  id="input-errmpu"
+                  name="errmpu"
+                  type="number"
+                  value="0.1"
+              /></label>
+            </li>
+          </ul>
+          搭档 STEP 值误差（默认设置假定游戏中显示的 STEP
+          值已根据计算中使用的实际 STEP 统计数据<em>向下</em>舍入为整数值；
+          对于<em>满配</em>的伞/猫对立或宿命光，误差上限可以设置为 0
+          ，对于其他觉醒或满级搭档，上限误差可以设置为 0.5）：
+          <ul>
+            <li>
+              STEP 值误差下限：<label
+                ><input
+                  disabled="disabled"
+                  id="input-errstpl"
+                  name="errstpl"
+                  type="number"
+                  value="0"
+              /></label>
+            </li>
+            <li>
+              STEP 值误差上限：<label
+                ><input
+                  id="input-errstpu"
+                  name="errstpu"
+                  type="number"
+                  value="0"
+              /></label>
+            </li>
+          </ul>
         </div>
-    </details>
+      </details>
 
-    <button class="calc-button" id="calc-button" onclick="updateCCs()" type="button">
+      <button
+        class="calc-button"
+        id="calc-button"
+        onclick="updateCCs()"
+        type="button"
+      >
         开始估计
-    </button>
+      </button>
 
-    <hr>
+      <hr />
 
-    <p>
-        估计下限：<span class="cc-est" id="ccmin"></span><br>
-        估计上限：<span class="cc-est" id="ccmax"></span><br>
-        舍入下限：<span class="cc-estround" id="ccminrnd"></span><br>
-        舍入上限：<span class="cc-estround" id="ccmaxrnd"></span></p>
-    <p><span class="errormsg" id="calcerror"></span></p>
+      <p>
+        估计下限：<span class="cc-est" id="ccmin"></span><br />
+        估计上限：<span class="cc-est" id="ccmax"></span><br />
+        舍入下限：<span class="cc-estround" id="ccminrnd"></span><br />
+        舍入上限：<span class="cc-estround" id="ccmaxrnd"></span>
+      </p>
+      <p><span class="errormsg" id="calcerror"></span></p>
 
-    <hr>
-    <p class="credits">原作：<a href="https://yabaiyatsu.github.io/">YabaiYatsu</a>，汉化：<a href="..">SPB</a></p>
+      <hr />
+      <p class="credits">
+        原作：<a href="https://yabaiyatsu.github.io/">YabaiYatsu</a>，汉化：<a
+          href=".."
+          >SPB</a
+        >
+      </p>
+    </div>
+  </body>
 
-</div>
-</body>
-
-<script src="main.js"></script>
-
+  <script src="main.js"></script>
 </html>
