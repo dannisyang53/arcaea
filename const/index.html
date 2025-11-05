@@ -37,7 +37,9 @@
             type="number"
             value="160" /></label
         ><br />
-        <span class="note">（含搭档技能 STEP 加成，例如百合咲美香）<br /></span>
+        <span class="note"
+          >（包括搭档技能 STEP 加成，例如百合咲美香）<br
+        /></span>
         <label
           ><input
             checked="checked"
@@ -51,14 +53,14 @@
             id="input-partnernonmax"
             name="nonmax"
             type="checkbox"
-          />非满配猫对立或宿命光</label
+          />非满数值猫对立或宿命光</label
         >
         <span class="note"
           ><br />尽量使用具有更高 STEP 值的搭档。<br />
           但要避免使用能改变分数显示方式的搭档（例如：拉格兰，觉醒忘却）。<br />
-          建议使用困难技能的搭档，这样可以在有掉分可能时尽早 TL
+          建议使用具有困难技能的搭档，这样可以在有掉分可能时尽早 TL
           （见下文），从而阻止 PTT 下降。<br />
-          如果不介意掉分，那么高 STEP 非困难技能搭档也值得考虑，
+          如果不介意掉分，那么高 STEP 但不具有困难技能的搭档也值得考虑，
           因为由于分数分心而导致过早 TL
           不在你的考虑范围内，从而更容易获得接近最低阈值的分数。
         </span>
@@ -157,7 +159,7 @@
         最低要求分数：
         <span class="minscorereq" id="minscorereq">0'000'000</span>
         <span class="note"
-          ><br />若游玩分数低于此要求，计算器无法给出有效结果。<br />
+          ><br />若游玩分数低于此要求，计算器无法计算有效结果。<br />
           不超过目标分数约 500000 分（使用高 STEP
           搭档(&ge;150)和强化可以扩大分数范围）。<br />
         </span>
@@ -179,7 +181,7 @@
             value="31.7"
         /></label>
         <span class="note"
-          ><br />（搭档加成<em>后</em>，但 <em>不包含</em>后续搭档技能加成，
+          ><br />（搭档加成<em>后</em>，但<em>不包含</em>后续搭档技能加成，
           例如觉醒露娜）</span
         >
       </p>
@@ -211,7 +213,7 @@
           </ul>
           搭档 STEP 值误差（默认设置假定游戏中显示的 STEP
           值已根据计算中使用的实际 STEP 统计数据<em>向下</em>舍入为整数值；
-          对于<em>满配</em>的伞/猫对立或宿命光，误差上限可以设置为 0
+          对于<em>满数值</em>的伞/猫对立或宿命光，误差上限可以设置为 0
           ，对于其他觉醒或满级搭档，上限误差可以设置为 0.5）：
           <ul>
             <li>
@@ -243,14 +245,14 @@
         onclick="updateCCs()"
         type="button"
       >
-        开始估计
+        开始计算定数
       </button>
 
       <hr />
 
       <p>
-        估计下限：<span class="cc-est" id="ccmin"></span><br />
-        估计上限：<span class="cc-est" id="ccmax"></span><br />
+        计算下限：<span class="cc-est" id="ccmin"></span><br />
+        计算上限：<span class="cc-est" id="ccmax"></span><br />
         舍入下限：<span class="cc-estround" id="ccminrnd"></span><br />
         舍入上限：<span class="cc-estround" id="ccmaxrnd"></span>
       </p>
